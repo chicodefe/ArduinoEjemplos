@@ -3,10 +3,9 @@ Name:		DisplayI2CBasico.ino
 Created:	11/27/2016 10:34:34 PM
 Author:	Chicodefe
 */
-
+//Librerias para Display
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-
 LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
 void setup()// the setup function runs once when you press reset or power the board
 	{
