@@ -1,5 +1,5 @@
 /*
-Name:		I2CScannerBasico.ino
+Name:		DisplayI2CBasico.ino
 Created:	11/27/2016 10:34:34 PM
 Author:	Chicodefe
 */
@@ -8,8 +8,6 @@ Author:	Chicodefe
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
-
-
 void setup()// the setup function runs once when you press reset or power the board
 	{
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
@@ -25,7 +23,6 @@ void setup()// the setup function runs once when you press reset or power the bo
 	lcd.setCursor(0,1);
 	lcd.print("Listo");
 	delay(300);
-
 	// Wait and then tell user they can start the Serial Monitor and type in characters to
 	// Display. (Set Serial Monitor option to "No Line Ending")
 	lcd.clear();
@@ -33,10 +30,7 @@ void setup()// the setup function runs once when you press reset or power the bo
 	lcd.print("Use Serial Mon");
 	lcd.setCursor(0,1);
 	lcd.print("Type to display");
-
-
 	}// end of setup
-
 
 void loop()// the loop function runs over and over again until power down or reset
 	{
@@ -56,7 +50,4 @@ void loop()// the loop function runs over and over again until power down or res
 					}
 				}
 			}
-
 	}// end of for loop
-
-
