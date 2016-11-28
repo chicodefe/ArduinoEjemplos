@@ -3,8 +3,13 @@
  Created:	11/27/2016 6:17:42 PM
  Author:	Chicodefe
 */
+//Librerias para sensor de temperatura
 #include <OneWire.h>
 #include <DallasTemperature.h>
+//Librerias para Display
+#include <Wire.h>
+#include <LCD.h>
+#include <LiquidCrystal_I2C.h>
 OneWire oneWire_Pin(4);
 DallasTemperature sensorSonda(&oneWire_Pin);
 // the setup function runs once when you press reset or power the board
