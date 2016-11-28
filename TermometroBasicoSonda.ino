@@ -37,7 +37,7 @@ void loop()// the loop function runs over and over again until power down or res
 	{
 	sensorSonda.requestTemperatures();
 	Serial.print("Temperatura: ");
-	Serial.println(sensorSonda.getTempCByIndex(0));
+	Serial.print(sensorSonda.getTempCByIndex(0));
 	Serial.println(" Celsius");
 
 	lcd.setCursor(0,0); //Start at character 0 on line 0
