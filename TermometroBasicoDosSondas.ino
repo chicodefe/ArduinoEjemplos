@@ -16,12 +16,17 @@
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE); // Set the LCD I2C address
-OneWire oneWire_Pin(2); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
-DallasTemperature sensorSonda(&oneWire_Pin);// Pass our oneWire reference to Dallas Temperature.
+OneWire oneWire_in(2); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+OneWire oneWire_out(3); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+
+DallasTemperature sensor_in(&oneWire_in);// Pass our oneWire reference to Dallas Temperature.
+DallasTemperature sensor_out(&oneWire_out);// Pass our oneWire reference to Dallas Temperature.
+
 
 void setup()// the setup function runs once when you press reset or power the board
 	{
 	pinMode(2,INPUT); // sets the digital pin 4 as input
+	pinMode(3,INPUT); // sets the digital pin 4 as input
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
 	lcd.begin(16,2); // initialize the lcd for 16 chars 2 lines, turn on backlight
 	lcd.setCursor(0,0);
@@ -37,9 +42,10 @@ void setup()// the setup function runs once when you press reset or power the bo
 
 void loop()// the loop function runs over and over again until power down or reset
 	{
-	sensorSonda.begin();// Iniciando el Sensor
+	sensor_in.begin();// Iniciando el Sensor
+	sensor_out.begin();// Iniciando el Sensor
 
-	if(sensorSonda.getDeviceCount()==0)
+	if(sensor_in.getDeviceCount()==0||sensor_out.getDeviceCount()==0)
 		{
 		Serial.println("Sensor no Conectado");
 		lcd.setCursor(0,0); //Start at character 0 on line 0
@@ -52,21 +58,26 @@ void loop()// the loop function runs over and over again until power down or res
 		return;
 		}
 
+	sensor_in.requestTemperatures();
+	sensor_out.requestTemperatures();
 	//Print on Serial
-	sensorSonda.requestTemperatures();
-	Serial.print("Temperatura: ");
-	Serial.print(sensorSonda.getTempCByIndex(0));
+	Serial.print("Temperatura In: ");
+	Serial.print(sensor_in.getTempCByIndex(0));
+	Serial.print((char)223);
+	Serial.println(" Celsius");
+	Serial.print("Temperatura Out: ");
+	Serial.print(sensor_out.getTempCByIndex(0));
 	Serial.print((char)223);
 	Serial.println(" Celsius");
 
 	//Print on LCD
 	lcd.setCursor(0,0); //Start at character 0 on line 0
-	lcd.print("Temperatura: ");
-	lcd.setCursor(0,1); //Start at character 0 on line 2
-	lcd.print(sensorSonda.getTempCByIndex(0));
+	lcd.print("Temp IN: ");
+	lcd.print(sensor_in.getTempCByIndex(0));
 	lcd.print((char)223);
-	lcd.print(" Celsius");
-	delay(10000);
 	lcd.setCursor(0,1); //Start at character 0 on line 2
-	lcd.print("                ");
+	lcd.print("Temp OUT: ");
+	lcd.print(sensor_out.getTempCByIndex(0));
+	lcd.print((char)223);
+	delay(1000);
 	}// end of for loop
