@@ -25,8 +25,8 @@ DallasTemperature sensor_out(&oneWire_out);// Pass our oneWire reference to Dall
 
 void setup()// the setup function runs once when you press reset or power the board
 	{
-	pinMode(2,INPUT); // sets the digital pin 4 as input
-	pinMode(3,INPUT); // sets the digital pin 4 as input
+	pinMode(2,INPUT); // sets the digital pin 2 as input
+	pinMode(3,INPUT); // sets the digital pin 3 as input
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
 	lcd.begin(16,2); // initialize the lcd for 16 chars 2 lines, turn on backlight
 	lcd.setCursor(0,0);
