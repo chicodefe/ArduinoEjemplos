@@ -72,7 +72,7 @@ void loop()// the loop function runs over and over again until power down or res
 
 	//Print on LCD
 	lcd.setCursor(0,0); //Start at character 0 on line 0
-	lcd.print("Temp IN: ");
+	lcd.print("Temp IN:  ");
 	lcd.print(sensor_in.getTempCByIndex(0));
 	lcd.print((char)223);
 	lcd.setCursor(0,1); //Start at character 0 on line 2
