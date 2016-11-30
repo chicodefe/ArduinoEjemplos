@@ -16,14 +16,23 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE); // Set the LCD I2C address
-OneWire oneWire_Pin(2); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+//Parametros Display
+LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
+
+//Parametros Libreria OneWire
+OneWire oneWire_Pin(4);// Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+//Parametros Libreria DallasTemperature
 DallasTemperature sensorSonda(&oneWire_Pin);// Pass our oneWire reference to Dallas Temperature.
 
 void setup()// the setup function runs once when you press reset or power the board
 	{
-	pinMode(2,INPUT); // sets the digital pin 2 as input
+	//Parametros Pines
+	pinMode(4,INPUT); // sets the digital pin 4 as input
+
+	//Parametros Serial
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
+
+	//Parametros LCD
 	lcd.begin(16,2); // initialize the lcd for 16 chars 2 lines, turn on backlight
 	lcd.setCursor(0,0);
 	lcd.print("Iniciando");
@@ -38,8 +47,11 @@ void setup()// the setup function runs once when you press reset or power the bo
 
 void loop()// the loop function runs over and over again until power down or reset
 	{
+
+	//Parametros Sensores
 	sensorSonda.begin();// Iniciando el Sensor
 
+	//Verificacion do Sensores
 	if(sensorSonda.getDeviceCount()==0)
 		{
 		Serial.println("Sensor no Conectado");
@@ -53,8 +65,10 @@ void loop()// the loop function runs over and over again until power down or res
 		return;
 		}
 
-	//Print on Serial
-	sensorSonda.requestTemperatures();
+	//Solicitudes de Temperatura
+sensorSonda.requestTemperatures();
+
+	//Print on Serial	
 	Serial.print("Temperatura: ");
 	Serial.print(sensorSonda.getTempCByIndex(0));
 	Serial.print((char)223);

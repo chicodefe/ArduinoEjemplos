@@ -5,11 +5,11 @@
 */
 
 #include <Wire.h>
-// the setup function runs once when you press reset or power the board
-void setup()
+
+void setup()// the setup function runs once when you press reset or power the board
 	{
-	// initialize serial communication at 9600 bits per second:
-	Serial.begin(9600);
+
+	Serial.begin(9600);// initialize serial communication at 9600 bits per second
 	while(!Serial)
 		{
 		}
@@ -29,15 +29,15 @@ void setup()
 			Serial.println(")");
 			count++;
 			// delay in between reads for stability
-	delay(1);
+			delay(1);
 			} // end of good response
 		} // end of for loop
 	Serial.println("Done.");
 	Serial.print("Found ");
 	Serial.print(count,DEC);
 	Serial.println(" device(s).");
-	
-	}  // end of setup
-// the loop function runs over and over again until power down or reset
-void loop()
+
+	}// end of setup
+
+void loop()// the loop function runs over and over again until power down or reset
 	{}// end of for loop

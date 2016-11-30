@@ -17,7 +17,7 @@
 #include <DallasTemperature.h>
 
 //Parametros Display
-LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE); // Set the LCD I2C address
+LiquidCrystal_I2C lcd(0x3f,2,1,0,4,5,6,7,3,POSITIVE); // Set the LCD I2C address
 
 //Parametros Libreria OneWire
 OneWire oneWire_in(4); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
@@ -29,7 +29,6 @@ DallasTemperature sensor_out(&oneWire_out);// Pass our oneWire reference to Dall
 
 void setup()// the setup function runs once when you press reset or power the board
 	{
-
 	//Parametros Pines
 	pinMode(4,INPUT); // sets the digital pin 4 as input
 	pinMode(5,INPUT); // sets the digital pin 5 as input
@@ -38,7 +37,7 @@ void setup()// the setup function runs once when you press reset or power the bo
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
 
 	//Parametros LCD
-	lcd.begin(16,2); // initialize the lcd for 16 chars 2 lines, turn on backlight
+	lcd.begin(20,4); // initialize the lcd for 16 chars 2 lines, turn on backlight
 	lcd.setCursor(0,0);
 	lcd.print("Iniciando...");
 	delay(300);

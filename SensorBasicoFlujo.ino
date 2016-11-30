@@ -12,8 +12,8 @@ void ContarPulsos()//---Función que se ejecuta en interrupción
 	NumPulsos++;  //incrementamos la variable de pulsos
 	}
 
-//---Función para obtener frecuencia de los pulsos--------
-int ObtenerFrecuencia()
+
+int ObtenerFrecuencia()//---Función para obtener frecuencia de los pulsos
 	{
 	int frecuencia;
 	NumPulsos=0;   //Ponemos a 0 el número de pulsos
