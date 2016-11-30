@@ -1,16 +1,28 @@
+
 /*
-Name:		DisplayI2CBasico.ino
-Created:	11/27/2016 10:34:34 PM
-Author:	Chicodefe
+  Name:		DisplayI2CBasico.ino
+  Created:	11/27/2016 10:34:34 PM
+  Author:	Chicodefe
 */
+
+//Librerias para Serial
+#include <SoftwareSerial.h>
+#include <HardwareSerial.h>
+
 //Librerias para Display
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
+
+//Parametros Display
+LiquidCrystal_I2C lcd(0x3f,2,1,0,4,5,6,7,3,POSITIVE); // Set the LCD I2C address
+
 void setup()// the setup function runs once when you press reset or power the board
 	{
+	//Parametros Serial
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
-	lcd.begin(16,2);// initialize the lcd for 16 chars 2 lines, turn on backlight
+
+	//Parametros LCD
+	lcd.begin(20,4); // initialize the lcd for 20 chars 4 lines, turn on backlight
 	lcd.backlight();
 	delay(300);
 	lcd.noBacklight();
@@ -25,6 +37,8 @@ void setup()// the setup function runs once when you press reset or power the bo
 	// Wait and then tell user they can start the Serial Monitor and type in characters to
 	// Display. (Set Serial Monitor option to "No Line Ending")
 	lcd.clear();
+
+	//Print on LCD
 	lcd.setCursor(0,0); //Start at character 0 on line 0
 	lcd.print("Use Serial Mon");
 	lcd.setCursor(0,1);
