@@ -17,7 +17,7 @@
 #include <LiquidCrystal_I2C.h>
 
 //Parametros Display
-LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
+LiquidCrystal_I2C lcd(0x3f,2,1,0,4,5,6,7,3,POSITIVE);// Set the LCD I2C address
 
 //Parametros Libreria OneWire
 OneWire oneWire_Pin(4);// Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
@@ -33,7 +33,7 @@ void setup()// the setup function runs once when you press reset or power the bo
 	Serial.begin(9600);// initialize serial communication at 9600 bits per second
 
 	//Parametros LCD
-	lcd.begin(16,2); // initialize the lcd for 16 chars 2 lines, turn on backlight
+	lcd.begin(20,4); // initialize the lcd for 16 chars 2 lines, turn on backlight
 	lcd.setCursor(0,0);
 	lcd.print("Iniciando");
 	delay(300);
@@ -66,7 +66,7 @@ void loop()// the loop function runs over and over again until power down or res
 		}
 
 	//Solicitudes de Temperatura
-sensorSonda.requestTemperatures();
+	sensorSonda.requestTemperatures();
 
 	//Print on Serial	
 	Serial.print("Temperatura: ");
