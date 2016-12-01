@@ -29,6 +29,7 @@ DallasTemperature sensor_out(&oneWire_out);// Pass our oneWire reference to Dall
 
 void setup()// the setup function runs once when you press reset or power the board
 	{
+
 	//Parametros Pines
 	pinMode(4,INPUT); // sets the digital pin 4 as input
 	pinMode(5,INPUT); // sets the digital pin 5 as input
