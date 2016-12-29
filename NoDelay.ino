@@ -26,7 +26,7 @@ http://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
 
 int ledState = LOW;// ledState used to set the LED
 
-				 // Generally, you should use "unsigned long" for variables that hold time. The value will quickly become too large for an int to store
+// Generally, you should use "unsigned long" for variables that hold time. The value will quickly become too large for an int to store
 unsigned long previousMillis1 = 0;// millis() returns an unsigned long.
 unsigned long intervalMillis1 = 1000; // the time we need to wait
 unsigned long time;
